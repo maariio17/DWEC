@@ -42,6 +42,48 @@ class Book{
     }
 } 
 
-console.log(Book.name);
+class BookList {
+    constructor(books){
+        this.nextBook = books[1];
+        this.currentBook = books[0];
+        this.lastBook = undefined;
+        this.books = books;
+    }
+
+    get readedBooks(){
+        let readed = 0;
+        for (const book of this.books){
+            if (!book.read){
+                unreaded++;
+            }
+        }
+        return unreaded;
+    }
+    
+    get anUnreadedBooks(){
+        for (const book of this.books){
+            if (!book.read && book!=this.currentBook) {
+                return book;
+            }
+        }
+        return undefined;
+    }
+
+    add(book){
+        this.books.push(book);
+    }
+
+    finishCurrentBook(){
+        this.currentBook.read = true;
+        this.currentBook.readDate = new Date(Date.now());
+        this.lastBook = this.currentBook;
+
+        this.currentBook = this.nextBook;
+
+        this.nextBook = this.anUnreadedBook;
+    }
+}
+
+
 
 
