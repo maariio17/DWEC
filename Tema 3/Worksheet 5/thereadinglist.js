@@ -5,7 +5,7 @@ Create a class BookList
 
 Create another class called Book
 
-BookLists should have the following properties:
+BookLists should have the following properties: (Array Libros)
 
 Number of books marked as read
 Number of books marked not read yet
@@ -33,7 +33,7 @@ Change the next book to be read property to be the first unread book you find in
 Booklists and Books might need more methods than that. Try to think of more that might be useful.*/
 
 class Book{
-    consttructor(title, genre, author, read, readdate) {
+    constructor(title, genre, author, read, readdate) {
         this.title = title || "No title";
         this.genre = genre || "Fiction";
         this.author = author || "No author";
