@@ -32,23 +32,16 @@ Change the current book to be the next book to be read
 Change the next book to be read property to be the first unread book you find in the list of books
 Booklists and Books might need more methods than that. Try to think of more that might be useful.*/
 
-var Book = function(title, genre, author, read, readdate) {
-    this.title = title || "No title";
-    this.genre = genre || "Fiction";
-    this.author = author || "No author";
-    this.read = read || false;
-    this.readdate = new Date(readdate);
-}
-
-var bookList = function(books){
-    if (!typeof books == "array"){
-        books = false;
+class Book{
+    consttructor(title, genre, author, read, readdate) {
+        this.title = title || "No title";
+        this.genre = genre || "Fiction";
+        this.author = author || "No author";
+        this.read = read || false;
+        this.readdate = new Date(readdate);
     }
-    this.bookShelf = books || [];
+} 
 
-    if (this.bookShelf.le){
+console.log(Book.name);
 
-    }
-    
-}
 
