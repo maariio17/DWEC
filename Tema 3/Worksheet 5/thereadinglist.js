@@ -43,45 +43,73 @@ class Book{
 } 
 
 class BookList {
-    constructor(books){
-        this.nextBook = books[1];
-        this.currentBook = books[0];
+    constructor(booklist = []){
+        this.booklist = booklist;
         this.lastBook = undefined;
-        this.books = books;
     }
 
-    get readedBooks(){
-        let readed = 0;
-        for (const book of this.books){
-            if (!book.read){
-                unreaded++;
-            }
-        }
-        return unreaded;
-    }
-    
-    get anUnreadedBooks(){
-        for (const book of this.books){
-            if (!book.read && book!=this.currentBook) {
+    get currentBook() {
+        for (const book of this.booklist) {
+            if (!book.read) {
                 return book;
             }
         }
-        return undefined;
+        return null;
     }
 
-    add(book){
-        this.books.push(book);
+    get readedBooks(){
+        return this.books.filter(book => book.read).length;
     }
 
-    finishCurrentBook(){
-        this.currentBook.read = true;
-        this.currentBook.readDate = new Date(Date.now());
-        this.lastBook = this.currentBook;
-
-        this.currentBook = this.nextBook;
-
-        this.nextBook = this.anUnreadedBook;
+    
+    get unreadedBooks(){
+        return this.books.filter(book => !book.read).length;
     }
+
+    get nextBook() {
+        for (const book of this.booklist) {
+            if (!book.read && book != this.currentBook) {
+                return book;
+            }
+        }
+        return null;
+    }
+
+    get totalBooks() {
+        return this.book.length;
+    }
+
+    add(book) {
+        this.booklist.push(book);
+    }
+
+    finishCurrentBook() {
+        if (this.currentBook != null) {
+            this.currentBook.readDate = new Date(Date.now());
+            this.lastBook = this.currentBook;
+            this.currentBook.read = true;
+            return this.lastBook;
+        }
+        return null;
+    }
+}
+var listaLibros = new BookList();
+
+function agregarLibros(){
+    var t = document.getElementById("titulo").value;
+    var g = document.getElementById("genero").value;
+    var a = document.getElementById("autor").value;
+    libro = new Book(t, g, a);
+    listaLibros.add(libro);
+
+    document.getElementById("titulo").value = "";
+    document.getElementById("genero").value = "";
+    document.getElementById("autor").value = "";
+
+    var fila="<tr><td>"+t+"</td><td>"+g+"</td><td>"+a+"</td></tr>";
+    var btn = document.createElement("TR");
+   	btn.innerHTML=fila;
+    document.getElementById("tablita").appendChild(btn);
 }
 
 
