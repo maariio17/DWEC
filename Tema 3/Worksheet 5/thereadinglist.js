@@ -37,7 +37,7 @@ class Book{
         this.title = title || "No title";
         this.genre = genre || "Fiction";
         this.author = author || "No author";
-        this.read = read || false;
+        this.read = read;
         this.readdate = new Date(readdate);
     }
 } 
@@ -58,12 +58,12 @@ class BookList {
     }
 
     get readedBooks(){
-        return this.books.filter(book => book.read).length;
+        return this.booklist.filter(book => book.read).length;
     }
 
     
     get unreadedBooks(){
-        return this.books.filter(book => !book.read).length;
+        return this.booklist.filter(book => !book.read).length;
     }
 
     get nextBook() {
@@ -76,7 +76,7 @@ class BookList {
     }
 
     get totalBooks() {
-        return this.book.length;
+        return this.booklist.length;
     }
 
     add(book) {
@@ -99,17 +99,33 @@ function agregarLibros(){
     var t = document.getElementById("titulo").value;
     var g = document.getElementById("genero").value;
     var a = document.getElementById("autor").value;
-    libro = new Book(t, g, a);
+    var read = document.formulario.readed.value;
+    
+    var date = document.getElementById("date").value;
+    if (read == "true"){
+        foto = '<img src="tick.jpg" width="25" height="25">';
+        read = true;
+    } else{
+        foto = '<img src="error.jpg" width="25" height="25"></img>';
+        read = false;
+    }
+
+    libro = new Book(t, g, a, read, date);
+    
     listaLibros.add(libro);
 
     document.getElementById("titulo").value = "";
     document.getElementById("genero").value = "";
     document.getElementById("autor").value = "";
+    document.querySelectorAll('[name=read]').forEach((x) => x.checked = false);
+    document.getElementById("date").value = "";
 
-    var fila="<tr><td>"+t+"</td><td>"+g+"</td><td>"+a+"</td></tr>";
+    var fila="<tr><td>"+t+"</td><td>"+g+"</td><td>"+a+"</td><td>"+foto+"</td><td>"+date+"</td></tr>";
     var btn = document.createElement("TR");
    	btn.innerHTML=fila;
     document.getElementById("tablita").appendChild(btn);
+
+    document.getElementById("booksRead").innerHTML = listaLibros.readedBooks + " of " +listaLibros.totalBooks;
 }
 
 

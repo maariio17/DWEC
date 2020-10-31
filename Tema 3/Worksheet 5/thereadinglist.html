@@ -18,12 +18,13 @@
         h3{
             font-family:cursive;
         }
+        p{
+            text-align: center;
+        }
         img{
             display: block;
             margin-left: auto;
             margin-right: auto;
-            width: 300px;
-            height: 300px;
         }
 
         #uno>td:nth-child(1){
@@ -109,7 +110,7 @@
     <div class="page">
         <section class="container">
             <article>
-                <form method="post" class="formulario">
+                <form name="formulario" method="post" class="formulario">
                     <fieldset>
                         <legend>Datos Libro</legend>
                         <label for="" class="formulario_label">Título</label><br>
@@ -120,11 +121,18 @@
                         <br/>
                         <label for="" class="formulario_label">Género</label><br>
                         <input class="formulario_input" type="text" id="genero" value="" />
+                        <label for="">Si</label>
+                        <input type="radio" id="readed" name="read" value="true"><br>
+                        <label for="">No</label>
+                        <input type="radio" id="readed" name="read" value="false"><br>
+                        <br>
+                        <label for="start">Fecha Read:</label>
+                        <input type="date" id="date" name="trip-start"><br>
+                        <br>
                         <input class="formulario_submit"  type="button" value="Agregar Libro" onclick="agregarLibros()">
                     </fieldset>
                 </form>
                 <br>
-                <!--<img src="libro.jpg">-->
             </article>
         </section>
         <aside>
@@ -135,12 +143,15 @@
                         <th>Título</th>
                         <th>Género</th>
                         <th>Autor</th>
+                        <th>Leido</th>
+                        <th>Fecha</th>
                     </tr>
                 </thead>
                 <tbody id="tablita">
     
                 </tbody>
             </table>
+            <p>Books read: <span id ="booksRead">0</span></p>
         </aside>
     </div>
     <footer>
