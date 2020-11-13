@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Reading List</title>
-    <script src="thereadinglist.js"></script>
+    <script src="funcionesBookList.js" type="module"></script>
     <style>
         h1{
             text-align: center;
@@ -102,6 +102,14 @@
         footer{
             margin-top: 13vw;
         }
+        .botonimagen{
+            background-image:url(papelera.jpg);
+            background-repeat:no-repeat;
+            height:50px;
+            width:50px;
+            background-position:center;
+            border-color: azure;
+        }
     </style>
 </head>
 <body>
@@ -137,7 +145,7 @@
         </section>
         <aside>
             <h3>Tu Biblioteca</h3>
-            <table >
+            <table id="tabla">
                 <thead>
                     <tr>
                         <th>Título</th>
