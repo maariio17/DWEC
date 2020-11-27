@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="formulario.css">
+    <style>
+        p{
+            margin-top: 0px;
+            margin-bottom: 0px;
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <section class="form-register">
+        <form class="formulario" id="formulario">
+                <h4>Formulario Registro</h4>
+                <input class="controls" type="text" name="nombre" id="nombre" placeholder="Ingrese su Nombre">
+                <p id="pNombre">Nombre sin numeros y guion bajo.</p>
+                <input class="controls" type="text" name="apellidos" id="apellidos" placeholder="Ingrese su Apellido" >
+                <p id="pApellidos">El Apellido no puede contener numeros y guion bajo.</p>
+                <input class="controls" type="text" name="dni" id="dni" placeholder="DNI" >
+                <p id="pDNI">8 digitos seguidos de una letra.</p>
+                <input class="controls" type="tel" name="telefono" id="telefono" placeholder="Introduce tu teléfono" >
+                <p id="pTelefono">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>
+                <input class="controls" type="email" name="correo" id="correo" placeholder="Ingrese su Correo" >
+                <p id="pCorreo">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>
+                <input class="controls" type="text" name="usuario" id="usuario" placeholder="Ingrese su usuario" >
+                <p id="pUsuario">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
+                <input type="checkbox" id="cbox1" value="first_checkbox"> Estoy de acuerdo con <a href="#">Terminos y Condiciones</a>
+                <input class="botons" type="button" value="Registrar" onclick="validarFormulario()">
+        </form>
+    </section>
+    <script src="formulario.js"></script>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+</body>
+</html>
