@@ -1,2 +1,0 @@
-/*1. Muestra, maquetada en una tabla HTML toda la informacion que puedas extraer mediante JavaScript del navegador cliente*/
-/*2. Realiza lo mismo para la inormación de la pantalla utilizada por el cliente*/
