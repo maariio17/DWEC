@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Vue</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    
+</head>
+<body>
+    <div id="miAplicacion">
+        <input v-on:keyup.enter="anadirRecordatorio" v-model="nuevoRecordatorio">
+        <button v-on:click="anadirRecordatorio">Añade Recordatorio</button>
+        <p>{{totalPendientes}} tareas pendientes de un total de {{totalTareas}}</p>
+        <p v-on:click="borrarTareasCompletadas">Borrar Tareas Completadas</p>
+        <div v-on:click="cambiarEstadoTarea(index)" v-for="(recordatorio, index) in listaRecordatorios" v-bind:key="recordatorio.title">
+            {{recordatorio.titulo}} La tarea tiene prioridad {{recordatorio.prioridad}} y completado {{recordatorio.completado}}
+            <button>Probar</button>
+        </div>
+    </div>
+
+
+    <script src="index.js"></script>
+</body>
+</html>
