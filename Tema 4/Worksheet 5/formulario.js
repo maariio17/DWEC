@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 function validarFormulario(){
 	var nombre = document.getElementById("nombre").value;
 	var apellidos = document.getElementById("apellidos").value;
@@ -83,7 +82,6 @@ function validarFormulario(){
 
 
 
-=======
 function validarFormulario(){
 	var nombre = document.getElementById("nombre").value;
 	var apellidos = document.getElementById("apellidos").value;
@@ -166,6 +164,3 @@ function validarFormulario(){
 	}
 }
 
-
-
->>>>>>> 14493652270b3c7b43faaf1da5e5f0fa02027726
