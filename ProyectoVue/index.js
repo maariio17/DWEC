@@ -1,52 +1,62 @@
 var app = new Vue({
-    el: '#miAplicacion',
-    data: {
-        nuevoRecordatorio: "",
-        listaRecordatorios: [],
-        isButtonDisabled: true
+  el: '#app',
+  data: {
+    nuevoRecordatorio:'',
+    arrayRecordatorio:[],
+    isButtonDisabled:true,
+  },
+  computed:{
+      totalTareas: function(){
+          return this.arrayRecordatorio.length;
       },
-      methods: {
-        anadirRecordatorio: function(){
-          this.listaRecordatorios.push({
-            titulo: this.nuevoRecordatorio,
-            prioridad: 0,
-            fechaCreacion: new Date(),
-            completado: false
-          });
-          this.nuevoRecordatorio = "";
-        },
-        cambiarEstadoTarea: function(posicion){
-          //this.listaRecordatorios.splice(posicion,1);
-          this.listaRecordatorios[posicion].completado = !this.listaRecordatorios[posicion].completado;
-        },
-        teclaPulsada: function(){
-          if (this.nuevoRecordatorio.length>0){
-            this.isbuttonDisabled = false;
-          } else{
-            this.isbuttonDisabled = true;
+      totalCompletadas: function(){
+          let completados=0;
+          for (let i = 0; i < this.arrayRecordatorio.length; i++) {
+              if(this.arrayRecordatorio[i].completado==true){
+                  completados++;
+              }
           }
-        },
-        borrarTareasCompletadas: function(){
-          for (i=0; i<this.listaRecordatorios.length; i++){
-            if (this.listaRecordatorios[i].completado){
-              this.listaRecordatorios.splice(i, 1);
-            }
-          }
-        }
+          return completados;
       },
-      computed: {
-        totalTareas: function(){
-           return this.listaRecordatorios.length;
-        },
-        totalPendientes: function(){
-          let total = 0;
-          for (i=0; i<this.listaRecordatorios.length; i++){
-            if (!this.listaRecordatorios[i].completado){
-              total++;
-            }
-          }
+      elementoCompletado: function(){
 
-          return total;
-        }
       }
-  })
+  },
+  methods:{
+      addRecordatorio: function(){
+          this.arrayRecordatorio.push({
+              titulo:this.nuevoRecordatorio,
+              prioridad: 0,
+              fecha: new Date(),
+              completado:false,
+          });
+          console.log(this.arrayRecordatorio);
+          this.nuevoRecordatorio='';
+      },
+      cambiarEstadoTarea: function(index){
+          this.arrayRecordatorio[index].completado = !this.arrayRecordatorio[index].completado;
+      },
+      teclaPulsada: function(){
+          this.nuevoRecordatorio.length > 0 ? this.isButtonDisabled=false : this.isButtonDisabled=true;
+      },
+      borrarTareasCompletadas: function(){
+          this.this.arrayRecordatorio = this.arrayRecordatorio.filter((nota)=>{
+              if (nota.completado == false) return true;
+          })
+          /* for (let i = 0; i < this.arrayRecordatorio.length; i++) {
+              if(this.arrayRecordatorio[i].completado){
+                  this.arrayRecordatorio.splice(i,1);
+              }
+          } */
+      }
+
+      //cada nota tiene:
+      //titulo
+      //fecha creacion
+      //completado
+      //prioridad(alta, media, baja)
+  }
+  //linkame lista notas filtrado
+  //que es un campo calculado
+
+})

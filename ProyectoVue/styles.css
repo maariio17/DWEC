@@ -1,0 +1,22 @@
+body,h1,p{
+    font-family: Arial, Helvetica, sans-serif;
+}
+h1{
+    text-align: center;
+}
+.inputs{
+    display:flex;
+    justify-content: center;
+}
+input{
+    width:70%;
+    height:50px;
+}
+.cards{
+    display:flex;
+    flex-direction: column;
+    
+}
+.completadoClase{
+    background-color:green;
+}

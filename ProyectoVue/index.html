@@ -3,23 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyecto Vue</title>
+    <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="miAplicacion">
-        <input v-on:keyup.enter="anadirRecordatorio" v-model="nuevoRecordatorio">
-        <button v-on:click="anadirRecordatorio">Añade Recordatorio</button>
-        <p>{{totalPendientes}} tareas pendientes de un total de {{totalTareas}}</p>
-        <p v-on:click="borrarTareasCompletadas">Borrar Tareas Completadas</p>
-        <div v-on:click="cambiarEstadoTarea(index)" v-for="(recordatorio, index) in listaRecordatorios" v-bind:key="recordatorio.title">
-            {{recordatorio.titulo}} La tarea tiene prioridad {{recordatorio.prioridad}} y completado {{recordatorio.completado}}
-            <button>Probar</button>
+    <div id="app">
+        <h1>Vue.JS</h1>
+        <div class="inputs">
+            <input v-model="nuevoRecordatorio" v-on:keyup.enter="addRecordatorio" v-on:keyup="teclaPulsada" placeholder="¿Qué quieres recordar?">
         </div>
+        <div class="cards">
+            <div v-for="(recordatorio, index) in arrayRecordatorio" v-on:click="cambiarEstadoTarea(index)" v-bind:key="recordatorio.titulo" v-bind:class="{completadoClase:recordatorio.completado}">
+                Titulo: {{recordatorio.titulo}} <br>
+                Prioridad: {{recordatorio.prioridad}} <br>
+                Fecha: {{recordatorio.fecha}} <br>
+                Completado: {{recordatorio.completado}} <br>
+                <button>Borrar</button>
+            </div>
+        </div>
+        <button v-bind:disabled="isButtonDisabled"> boton</button>
+        <p>Total de tareas: {{totalTareas}}</p>
+        <p>Tareas completados: {{totalCompletadas}}</p>
+        
     </div>
 
-
-    <script src="index.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
